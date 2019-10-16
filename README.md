@@ -8,10 +8,12 @@ Vueにより作成したstatic fileを配布するPodと、golangにより作成
 paths:
   - path: "/"
     git: https://github.com/k-washi/example-vue-cli.git
-    image:
+    image: kwashizaki/example-vue-cli
     description: vueにより構築したフロントエンド
 
   - path: "/example-golang-rest-api/"
+      - GET: {name: "nema", description: "test"}
+      - /health/: status:200 response
     git: https://github.com/k-washi/example-golang-rest-api.git
     image:
     description: golangにより構築したREST API
