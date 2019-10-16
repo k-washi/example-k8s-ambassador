@@ -12,7 +12,8 @@ paths:
     description: vueにより構築したフロントエンド
 
   - path: "/example-golang-rest-api/"
-      - GET: {name: "nema", description: "test"}
+      - GET: {name: "name", description: "test", data: [{}, {}] }
+      - POST: {name: "name", description: "test", data: {id: 1, name: "test1" }}
       - /health/: status:200 response
     git: https://github.com/k-washi/example-golang-rest-api.git
     image:
