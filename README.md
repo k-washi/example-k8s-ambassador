@@ -3,6 +3,8 @@
 API Gateway Ambassadorを用いたk8sクラスタの構築例。
 Vueにより作成したstatic fileを配布するPodと、golangにより作成したREST APIのPodで構成される。
 
+Docker for macでのみ確認
+
 ```yaml
 
 paths:
@@ -20,5 +22,13 @@ paths:
         git: https://github.com/k-washi/example-golang-rest-api.git
         image: kwashizaki/example-golang-rest-api
         description: golangにより構築したREST API
+
+```
+
+## 実行
+
+```bash
+
+./cmd/start.sh
 
 ```
