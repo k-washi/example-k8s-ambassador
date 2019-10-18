@@ -1,30 +1,29 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ex-vue-cli
+  name: ex-go
   annotations:
     getambassador.io/config: |
       ---
       apiVersion: ambassador/v0
       kind:  Mapping
-      name:  ex-vu-cli-map
-      prefix: "/"
-      prefix_regex: true
-      service: http://ex-vue-cli:8080
+      name:  ex-health-map
+      prefix: /api/ex-golang/
+      service: http://ex-go:8080
 spec:
   type: ClusterIP
   ports:
-  - name: ui
+  - name: cl-ip-ex-go
     port: 8080
-    targetPort: 80 
+    targetPort: 8080
   selector:
-    app: ex-vue-cli
+    app: ex-go
 
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: ex-vue-cli
+  name: ex-go
 spec:
   replicas: 1
   strategy:
@@ -32,14 +31,14 @@ spec:
   template:
     metadata:
       labels:
-        app: ex-vue-cli
+        app: ex-go
     spec:
       containers:
-      - name: ex-vue-cli-ui
-        image: kwashizaki/example-vue-cli:v1.0.0
+      - name: ex-go-ui
+        image: kwashizaki/example-golang-rest-api:v1.0.0
         ports:
-        - name: ex-vue-cli
-          containerPort: 80
+        - name: ex-go
+          containerPort: 8080
         resources:
           limits:
             cpu: "0.1"
