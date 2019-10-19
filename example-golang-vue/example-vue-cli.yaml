@@ -8,8 +8,7 @@ metadata:
       apiVersion: ambassador/v0
       kind:  Mapping
       name:  ex-vu-cli-map
-      prefix: "/"
-      prefix_regex: true
+      prefix: /
       service: http://ex-vue-cli:8080
 spec:
   type: ClusterIP

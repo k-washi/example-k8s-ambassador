@@ -6,7 +6,7 @@ kubectl delete -f ambassador/ambassador-rbac.yaml
 kubectl delete -f example-golang-vue/example-golang.yaml 
 
 #for nginx
-kubectl delete -f example-golang-vue/example-vue-cli.yaml 
+kubectl delete -f example-golang-vue/nginx-example-vue-cli.yaml 
 
 sleep 30
 
@@ -17,4 +17,4 @@ sleep 30
 kubectl apply -f example-golang-vue/example-golang.yaml 
 
 #for nginx
-kubectl apply -f example-golang-vue/example-vue-cli.yaml
+kubectl apply -f example-golang-vue/nginx-example-vue-cli.yaml
