@@ -14,8 +14,8 @@ paths:
     description: vueにより構築したフロントエンド
 
   - path: "/api/ex-golang/rest-api/:8080"
-      GET: req: {"name": "name"}, res: {"name": "name", "description": "test", "datas": [{post-data-1}, {post-data-2}] }
-      POST: req: {"name": "name", "description": "test", "data": {"id": 1, "name": "test1" }}, res: {"name": "name", "message": "create info and store database"}
+      GET: req: /*?name=something, res: {"name": "name", "description": "test", "datas": [{post-data-1}, {post-data-2}] }
+      POST: req: {"name": "name", "description": "test", "id": 1, "data": "test1" }}, res: {"name": "name", "message": "create info and store database"}
   - path: /api/ex-golang/health/
         GET: status:200 response and , res:{"health": 200}
   - info:
