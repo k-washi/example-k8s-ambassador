@@ -68,7 +68,17 @@ kubectl logs <name>
 #get
 kubectl get pods
 kubectl get svc
+```
 
+## Debug 
+
+k8sデバック用のポッド
+
+```bash
+
+kubectl apply -f debug/pod.yml
+kubectl exec -it debug sh
+```
 
 ## Error
 
