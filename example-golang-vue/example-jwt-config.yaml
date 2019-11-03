@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ex-jwt-map
+data:
+  origin.host: localhost
+  #数字は, ""で囲む
+  origin.port: "80"
+  ambassador.host: ex-jwt-sr
+  ambassador.port: "8080"
+  jwtserver.host: localhost
+  jwtserver.port: "50051"

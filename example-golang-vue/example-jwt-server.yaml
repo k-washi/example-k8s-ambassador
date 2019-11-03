@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ex-jwt-sr
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind:  Mapping
+      name:  ex-jwt
+      grpc: True
+      prefix: /jwtauth.JwtService/
+      rewrite: /jwtauth.JwtService/
+      service: ex-jwt-sr
+spec:
+  type: ClusterIP
+  ports:
+  - name: cl-ip-ex-jwt-sr
+    port: 8080
+    targetPort: 50051
+  selector:
+    app: ex-jwt-sr
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ex-jwt-sr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ex-jwt-sr
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ex-jwt-sr
+    spec:
+      containers:
+      - name: ex-jwt-sr
+        image: kwashizaki/example-golang-jwt-auth-server:v1.0.0
+        ports:
+        - name: ex-jwt-sr-api
+          containerPort: 50051
+        resources:
+          limits:
+            cpu: "0.1"
+            memory: 100Mi
+        env:
+          - name: AMBASSADORHOST
+            valueFrom:
+              configMapKeyRef:
+                name: ex-jwt-map
+                key: jwtserver.host
+          - name: PORT
+            valueFrom:
+              configMapKeyRef:
+                name: ex-jwt-map
+                key: jwtserver.port
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            valueFrom:
+              secretKeyRef:
+                name: firebase-secret
+                key: google_app_creds
+        volumeMounts:
+          - name: firebase-creds
+            mountPath: /tmp #firebase-auth-credファイルを置く場所
+            readOnly: true
+      volumes:
+      - name: firebase-creds
+        hostPath:
+          path: /Users/washizakikai/DevLocal/git/kwashi/example-k8s-ambassador/env
+            
+                

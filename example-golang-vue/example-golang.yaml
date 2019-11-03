@@ -20,12 +20,15 @@ spec:
     app: ex-go
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ex-go
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: ex-go
   strategy:
     type: RollingUpdate
   template:
@@ -43,3 +46,4 @@ spec:
           limits:
             cpu: "0.1"
             memory: 100Mi
+        
