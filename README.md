@@ -38,7 +38,7 @@ paths:
 
 ## Sercret
 
-./env/env-secret.txtにfirebaseのadminsdk情報を記載
+./env/env-secret.txtにfirebaseのadminsdk情報
 google_app_creds=/tmp/ex-firebase-auth-firebase-adminsdk-xxxxxxxxxx.json
 を記載.
 
