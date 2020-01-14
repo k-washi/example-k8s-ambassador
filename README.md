@@ -38,6 +38,10 @@ paths:
 
 ## Sercret
 
+./env/env-secret.txtにfirebaseのadminsdk情報を記載
+google_app_creds=/tmp/ex-firebase-auth-firebase-adminsdk-xxxxxxxxxx.json
+を記載.
+
 ```bash
 kubectl create secret generic --save-config firebase-secret --from-env-file ./env/env-secret.txt
 
