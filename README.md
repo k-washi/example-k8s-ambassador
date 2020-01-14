@@ -11,25 +11,25 @@ paths:
   - path: "/:80"
     git: https://github.com/k-washi/example-vue-cli.git
     image: kwashizaki/example-vue-cli
-    description: vueにより構築したフロントエンド
+    msg: vueにより構築したフロントエンド
 
   - path: "/api/ex-golang/rest-api/:8080"
-      GET: req: /*?name=something, res: {"name": "name", "description": "test", "datas": [{post-data-1}, {post-data-2}] }
+      GET: req: /*?name=anything, res: {"name": "name", "description": "test", "datas": [{post-data-1}, {post-data-2}] }
       POST: req: {"name": "name", "description": "test", "id": 1, "data": "test1" }}, res: {"name": "name", "message": "create info and store database"}
   - path: /api/ex-golang/health/
-        GET: status:200 response and , res:{"health": 200}
-    info:
-        git: https://github.com/k-washi/example-golang-rest-api.git
-        image: kwashizaki/example-golang-rest-api
-        description: golangにより構築したREST API
+      GET: status:200 response and , res:{"health": 200}
+  - info:
+      git: https://github.com/k-washi/example-golang-rest-api.git
+      image: kwashizaki/example-golang-rest-api
+      msg: golangにより構築したREST API
 
   - path:  "/api/ex-jwt/jwt/ex-jwt-auth"
-    GET: res: {"status": 200, "message": "Authorization username / email"} 
-    info: "jwt認可"
+      GET: res: {"status": 200, "message": "Authorization username / email"} 
+      msg: "jwt認可"
   - path: "/api/ex-jwt/auth/ex-authentication"
-    GET: res: {"status": 200, "message": "Authorization username / email"} 
-    info: "ワンタイムjwt認可 /envの配下にex-firebase-auth-firebase-adminsdk.jsonを置く"
-  - path: 
+      GET: res: {"status": 200, "message": "Authorization username / email"} 
+      msg: "ワンタイムjwt認可 /envの配下にex-firebase-auth-firebase-adminsdk.jsonを置く"
+  - info: 
     front-image: kwashizaki/example-golang-jwt-auth-client:v1.0.0
     server-image: kwashizaki/example-golang-jwt-auth-server:v1.0.0
     git: https://github.com/k-washi/example-golang-jwt-auth
