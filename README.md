@@ -1,7 +1,8 @@
 # example-k8s-ambassador
 
-API Gateway Ambassadorを用いたk8sクラスタの構築例。
-Vueにより作成したstatic fileを配布するPodと、golangにより作成したREST APIのPodで構成される。
+フロント(Vue)の認証によりFirebaseからJWT情報を取得し、そのJWTを用いてサーバ側(Golang)で認可を行うことで、個人情報を処理している。
+システムの構成は、マイクロサービスを意識している。
+サーバ側の各サービスはDocker Imageで隔離しており、GRPCでつないでいる。それらのイメージの管理は、k8sで行っており、 API GatewayにAmbassadorを用いることでURLを管理している。
 
 Docker for macでのみ確認
 
